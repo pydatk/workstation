@@ -2,9 +2,15 @@
 
 set -e
 
+echo "Please close any open programs then press any key to continue..."
+read -n 1 -s
+
 echo "Creating dirs for setup history"
 mkdir -p "$HOME/.workstation"
 mkdir -p "$HOME/.workstation/.updates"
+if [ ! -f "$HOME/.workstation/.setup.log" ]; then
+    touch "$HOME/.workstation/.setup.log"
+fi
 
 echo "Getting setup type (minimal, full or prompt)"
 if [ -f "$HOME/.workstation/.setup_type" ]; then
@@ -49,6 +55,7 @@ function apply_update() {
             echo "Applying update: $1"
             ./"updates/$1.sh"
             echo "$now" > "$HOME/.workstation/.updates/.$1"
+            echo "$now $1" >> "$HOME/.workstation/.setup.log"
             echo "Finished applying update: $1"
         else
             echo "$now" > "$HOME/.workstation/.updates/.$1[no]"
