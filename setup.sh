@@ -77,6 +77,10 @@ if [ "$setup_type" == "all" ] || [ "$setup_type" == "prompt" ]; then
     if [ -f "$HOME/.workstation/.updates/.create-home-dirs" ]; then
         apply_update "declutter-home-dir"
     fi
+    apply_update "pip"
+    if [ -f "$HOME/.workstation/.updates/.pip" ]; then
+        apply_update "safety"
+    fi
     apply_update "install-python-venv"
     apply_update "install-postgres"
     if [ -f "$HOME/.workstation/.updates/.install-postgres" ]; then
