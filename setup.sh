@@ -83,6 +83,7 @@ if [ "$setup_type" == "all" ] || [ "$setup_type" == "prompt" ]; then
         apply_update "change-postgres-locale"
         apply_update "revoke-postgres-db-public"
         apply_update "psycopg-dependencies"
+        apply_update "pgadmin"
     fi
     apply_update "install-quarto"
     apply_update "install-vs-code"
