@@ -3,7 +3,7 @@ set -e
 
 read -p "venv name: " venv_name
 
-now=$(date +"%y%m%d%H%M")
+now=$(date +"%y%m%d")
 
 venv_dir="$HOME/venvs"
 venv_fn="$venv_dir/"$venv_name"_$now"
